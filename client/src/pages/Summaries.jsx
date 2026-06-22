@@ -202,9 +202,8 @@ const Summaries = () => {
               {/* 🎤 Voice Search Button */}
               <button
                 onClick={handleVoiceSearch}
-                className={`px-3 py-2 border-l border-gray-200 transition flex items-center justify-center ${
-                  listening ? "text-red-500 animate-pulse" : "text-gray-600 hover:text-blue-600"
-                }`}
+                className={`px-3 py-2 border-l border-gray-200 transition flex items-center justify-center ${listening ? "text-red-500 animate-pulse" : "text-gray-600 hover:text-blue-600"
+                  }`}
                 title={listening ? "Stop Listening" : "Start Voice Search"}
               >
                 {listening ? <MicOff size={18} /> : <Mic size={18} />}
