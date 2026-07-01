@@ -43,14 +43,14 @@ const Navbar = () => {
         return (
             <div className="text-sm text-gray-800 font-medium tracking-wide hidden sm:block">
                 <span className="capitalize">{role}</span>
-                {userData.organization?.name && (
+                {userData.organization && userData.organization.name ? (
                     <>
                         {" | "}
                         <span className="font-semibold text-blue-700">
                             {userData.organization.name.toUpperCase()}
                         </span>
                     </>
-                )}
+                ) : null}
             </div>
         );
     };
@@ -80,7 +80,7 @@ const Navbar = () => {
                 Profile
             </button>
 
-            {userData?.role === "admin" && (
+            {userData && userData.role === "admin" ? (
                 <button
                     onClick={() => {
                         setMenuOpen(false);
@@ -90,7 +90,7 @@ const Navbar = () => {
                 >
                     Admin Panel
                 </button>
-            )}
+            ) : null}
 
             <button
                 onClick={() => {
@@ -138,7 +138,9 @@ const Navbar = () => {
                                         aria-expanded={menuOpen}
                                         aria-label="Open user menu"
                                     >
-                                        {userData?.name?.charAt(0)?.toUpperCase() ?? "U"}
+                                        {userData && userData.name && userData.name.charAt(0)
+                                            ? userData.name.charAt(0).toUpperCase()
+                                            : "U"}
                                     </button>
                                     {menuOpen && renderDropdown()}
                                 </div>
