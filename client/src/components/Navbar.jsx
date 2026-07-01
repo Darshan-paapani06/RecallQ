@@ -34,26 +34,27 @@ const Navbar = () => {
         }
     }, [backendUrl, setUserData]);
 
-    const renderRoleInfo = () => {
-        if (!userData) return null;
-        const role = userData.role
-            ? userData.role.charAt(0).toUpperCase() + userData.role.slice(1).toLowerCase()
-            : "Member";
+ const renderRoleInfo = () => {
+  if (!userData) return null;
+  
+  const role = userData.role
+    ? userData.role.charAt(0).toUpperCase() + userData.role.slice(1).toLowerCase()
+    : "Member";
 
-        return (
-            <div className="text-sm text-gray-800 font-medium tracking-wide hidden sm:block">
-                <span className="capitalize">{role}</span>
-                {userData.organization && userData.organization.name ? (
-                    <>
-                        {" | "}
-                        <span className="font-semibold text-blue-700">
-                            {userData.organization.name.toUpperCase()}
-                        </span>
-                    </>
-                ) : null}
-            </div>
-        );
-    };
+  return (
+    <div className="text-sm text-gray-800 font-medium tracking-wide hidden sm:block">
+      <span className="capitalize">{role}</span>
+      {userData.organization && userData.organization.name && (
+        <>
+          {" | "}
+          <span className="font-semibold text-blue-700">
+            {userData.organization.name.toUpperCase()}
+          </span>
+        </>
+      )}
+    </div>
+  );
+};
 
     const renderDropdown = () => (
         <div
